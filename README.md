@@ -43,7 +43,7 @@ After the board is reset the user can select the start button to re-visualize th
 ![](readmeimages/showcase1.gif)
 
 ## Future plans: 
-- Once I have a bit of time on my hands I plan on scratching pygame and having the display in HTML where I used flask to
+- Once I have a bit of time on my hands I plan on scratching pygame and having the display in HTML where I use flask to
 concatonate my program in python with a server. I will use CSS to style the visualizer.
 - Will add the feature of saving maps where the user is able to rerun the map they had saved previously.
 
