@@ -40,7 +40,7 @@ After the board is reset the user can select the start button to re-visualize th
 
 ## A few demos:
 ![](readmeimages/showcase2.gif)
-![](readmeimages/showcase3.gif)
+![](readmeimages/showcase1.gif)
 
 ## Future plans: 
 - Once I have a bit of time on my hands I plan on scratching pygame and having the display in HTML where I used flask to
