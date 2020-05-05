@@ -8,19 +8,23 @@ Note: The user has the option to not include checkpoints
 
 This pathfinding program requires the Pygame library in order to run. Without it, errors will arise, unfortunately
 
-#Instructions
-Run index.py to run the main file
+## Instructions
+1) Run index.py to run the main file
 
-Select a map
+2) Select a map
 Maze: Able to select start, goal, checkpoints
 Random: Able to select the rate of walls spawning. Recommended spawn rate is 0-30%. Able to select start, goal, checkpoints, and walls
 Creative: Able to select start, goal, checkpoints, and walls. 
 Basic: Able to select start, goal and checkpoints
 
-When selecting wall nodes:
- - Option 1 allows you to select a 1x1 square,
- - Option 2 allows you to select a 3x3 square without the center,
- - option 3 allows you to select a 1x3 rect,
+3) When Selecting checkpoint nodes: 
+- You may select as many CPs as you want
+- These are not goal nodes. The algorithm will be forced to reach them in the order they were placed. If there exists an unreachable CP, then there will be no final path.
+
+3) When selecting wall nodes:
+ - Option 1 allows you to select a 1x1 square
+ - Option 2 allows you to select a 3x3 square without the center
+ - option 3 allows you to select a 1x3 rect.
  - option 3 allows you to select a 3x1 rect.
  
 
