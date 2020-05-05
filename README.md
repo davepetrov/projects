@@ -39,7 +39,7 @@ This option resets all the paths to default (including the paths, closed set and
 After the board is reset the user can select the start button to re-visualize the path
 
 ## A few demos:
-![](readmeimages/showcase3.gif)
+![](readmeimages/showcase4.gif)
 ![](readmeimages/showcase2.gif)
 ![](readmeimages/showcase1.gif)
 
