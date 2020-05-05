@@ -1,7 +1,7 @@
 # A* Pathfinding Algorithm
 This is my first attempt at A* pathfinding. I made this visualization out of interest for pathfinding. 
 
-##Reqs.
+## Reqs.
 You must create a map to start the pathfinding. The Orange node represents the start node, the brown nodes represent checkpoints
 (ie: points the algorithms needs to pass in order to complete the path), and the red node represents the goal node.
 Note: The user has the option to not include checkpoints
