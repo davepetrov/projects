@@ -38,6 +38,9 @@ Restart Button:
 This option resets all the paths to default (including the paths, closed set and open set) without deselecting the nodes placed by the user.
 After the board is reset the user can select the start button to re-visualize the path
 
+## Brief path explanations:
+The A* path finding algorithm is one of the most efficient pathfinding algorithms which finds the shortest distance in the most optimal time. The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquious path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from one point to another. This path is updated in real time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satifsying projects yet. Youll get what I mean as you play around with the settings.
+
 ## A few demos:
 ![](readmeimages/showcase4.gif)
 ![](readmeimages/showcase2.gif)
