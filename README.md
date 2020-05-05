@@ -43,8 +43,7 @@ After the board is reset the user can select the start button to re-visualize th
 concatonate my program in python with a server. I will use CSS to style the visualizer.
 - Will add the feature of saving maps where the user is able to rerun the map they had saved previously.
 
-<div style="width:500px;max-width:100%;"><div style="height:0;padding-bottom:52.8%;position:relative;"><iframe width="500" height="264" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/4042te"></iframe></div><p><a href="https://imgflip.com/gif/4042te">via Imgflip</a></p></div>
-
+[url=https://imgflip.com/gif/4042te][img]https://i.imgflip.com/4042te.gif[/img][/url][url=https://imgflip.com/gif-maker]via Imgflip GIF Maker[/url]
 
 
  
