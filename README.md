@@ -1,6 +1,11 @@
 # A* Pathfinding Algorithm
 This is my first attempt at A* pathfinding. I made this visualization out of interest for pathfinding. 
 
+
+## Brief path explanations:
+The A* path finding algorithm is one of the most efficient pathfinding algorithms which finds the shortest distance in the most optimal time. The algorithm uses a heuristic to determine the direction for which the path needs to travel. The node is allowed to travel diagonally by default [You can change this in the node.py file to make it only follow horizonal and vertical movements]
+The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquious path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from point A to the current position the algorithm is working on. This path is updated in real time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satifsying projects yet. Youll get what I mean as you play around with the settings.
+
 ## Reqs.
 You must create a map to start the pathfinding. The Orange node represents the start node, the brown nodes represent checkpoints
 (ie: points the algorithms needs to pass in order to complete the path), and the red node represents the goal node.
@@ -37,10 +42,6 @@ This option clears the board. The user must reselect the start and goal nodes in
 Restart Button:
 This option resets all the paths to default (including the paths, closed set and open set) without deselecting the nodes placed by the user.
 After the board is reset the user can select the start button to re-visualize the path
-
-## Brief path explanations:
-The A* path finding algorithm is one of the most efficient pathfinding algorithms which finds the shortest distance in the most optimal time. The algorithm uses a heuristic to determine the direction for which the path needs to travel. The node is allowed to travel diagonally by default [You can change this in the node.py file to make it only follow horizonal and vertical movements]
-The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquious path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from point A to the current position the algorithm is working on. This path is updated in real time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satifsying projects yet. Youll get what I mean as you play around with the settings.
 
 ## A few demos:
 ![](readmeimages/showcase4.gif)
