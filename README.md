@@ -24,8 +24,8 @@ Basic: Able to select start, goal and checkpoints
 3) When selecting wall nodes:
  - Option 1 allows you to select a 1x1 square
  - Option 2 allows you to select a 3x3 square without the center
- - option 3 allows you to select a 1x3 rect.
- - option 3 allows you to select a 3x1 rect.
+ - Option 3 allows you to select a 1x3 rect.
+ - Option 4 allows you to select a 3x1 rect.
  
 
 Start button:
