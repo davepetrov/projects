@@ -3,8 +3,9 @@ This is my first attempt at A* pathfinding. I made this visualization out of int
 
 
 ## Brief path explanations:
-The A* path finding algorithm is one of the most efficient pathfinding algorithms which finds the shortest distance in the most optimal time. The algorithm uses a heuristic to determine the direction for which the path needs to travel. The node is allowed to travel diagonally by default [You can change this in the node.py file to make it only follow horizonal and vertical movements]
-The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquious path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from point A to the current position the algorithm is working on. This path is updated in real time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satifsying projects yet. Youll get what I mean as you play around with the settings.
+The A* pathfinding algorithm is one of the most efficient pathfinding algorithms which finds the shortest distance in the most optimal time. The algorithm uses a heuristic to determine the direction for which the path needs to travel. The node is allowed to travel diagonally by default [You can change this in the node.py file to make it only follow horizontal and vertical movements]
+
+The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquoise path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from point A to the current position the algorithm is working on. This path is updated in real-time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satisfying projects yet. Youll get what I mean as you play around with the settings.
 
 ## Reqs.
 You must create a map to start the pathfinding. The Orange node represents the start node, the brown nodes represent checkpoints
