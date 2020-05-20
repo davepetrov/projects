@@ -1,4 +1,4 @@
-# A* Pathfinding Algorithm
+# A* Pathfinding Algorithm Visualizer
 This is my first attempt at A* pathfinding. I made this visualization out of interest for pathfinding. 
 
 
