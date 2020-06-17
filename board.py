@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #--------------------#
 # BOARD PAGE
 #    Includes
@@ -104,7 +105,6 @@ class Board():
         for row in range(self.rows):
             for col in range(self.cols):
                 self.matrix[row][col].createChildren(self)
-                # print(len(self.matrix[row][col].neighbors))
 
     def loadBoard(self):
         for row in range(self.rows):
@@ -140,7 +140,6 @@ class Board():
                 self.matrix[i][j] = None
     
     def restart(self):
-        print("RESTART")
         self.openSet = [self.start]  # nodes to be visited per ct
         self.openSetsCP = [[self.start]]
         self.closedSetCP = [[]]  # nodes visited per ct
@@ -245,7 +244,7 @@ class ObsticleBoard(Board):
         optb = Button(D_GREEN,WIDTH-80, padding+220, 20, 20, "2" )
         optc = Button(D_GREEN,WIDTH-80, padding+250, 20, 20, "3" )
         optd = Button(D_GREEN,WIDTH-80, padding+280, 20, 20, "4" )
-        wallBrush_txt = font.render("WallBrush",True, BLACK)                                             #               
+        wallBrush_txt = font.render("WallBrush",True, BLACK)                                                           
         while cont:
             for e in pygame.event.get():
                 pos=pygame.mouse.get_pos()
@@ -303,7 +302,6 @@ class ObsticleBoard(Board):
                             self.matrix[y][x+1].wall = True
                             self.matrix[y][x].wall = True
                             self.matrix[y][x-1].wall = True
-                        print(self.wallShape)
 
                 if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
                     self.userSelect=None

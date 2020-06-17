@@ -20,15 +20,19 @@ from button import Button
 from interactive import interactive
 pygame.init()
 
+def sortByDistance(self):
+    #IMPLEMENT THIS FUNCTION 
+    #SORTS CHECkPOINTS BY CLOSEST DISTANCE TO CURRENT NODE
+    pass
+
 def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
     for i in range(len(b.openSet)):
         if b.openSet[i].f < b.openSet[winner].f:
             winner = i
     b.current = b.openSet[winner]
-    #Check if we are at the goal node
+    #FINISHED PATH  #####
     if b.current.isGoal(b): 
         b.finish = True
-        b.act = "done"
         temp  = b.current 
         b.path.append(temp)
         b.paths.extend(b.path)
@@ -37,8 +41,7 @@ def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
         print("Path found")
         return True
 
-    
-    set_remove(b.openSet, b.current)
+    set_remove(b.openSet, b.current )
     currentClosedSet.append(b.current);
     neighbors = b.current.neighbors
     
