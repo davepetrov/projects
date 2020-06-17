@@ -7,12 +7,13 @@ The A* pathfinding algorithm is one of the most efficient pathfinding algorithms
 
 The Closed Set, denoted by the purple path represents the nodes that the algorithm has visited. The Open Set, denoted by the turquoise path represents the nodes that the algorithm will visit next. The golden path represents the most optimal path from point A to the current position the algorithm is working on. This path is updated in real-time so the user can see where the algorithm is working during the process. Play around with the visualizer... you'll find yourself creating some pretty crazy paths... and trust me when I say this, this has been one of the most visually satisfying projects yet. Youll get what I mean as you play around with the settings.
 
-## Reqs.
+## Requirements.
 You must create a map to start the pathfinding. The Orange node represents the start node, the brown nodes represent checkpoints
 (ie: points the algorithms needs to pass in order to complete the path), and the red node represents the goal node.
 Note: The user has the option to not include checkpoints
 
-This pathfinding program requires the Pygame library in order to run. Without it, errors will arise, unfortunately
+This pathfinding program requires the Pygame library in order to run. Without it, errors will arise, unfortunately:
+https://www.pygame.org/download.shtml
 
 ## Instructions
 1) Run index.py to run the main file
