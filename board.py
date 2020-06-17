@@ -72,6 +72,7 @@ class Board():
                     
             display(self)
 
+    #User selects position of start and goal for every board
     def selectStartAndGoal(self):
         self.act == 'choose'
         click = 0
@@ -84,6 +85,7 @@ class Board():
                 x = (mouseX-padding)//ppb
                 y = (mouseY-padding)//ppb
                 if e.type == pygame.MOUSEBUTTONDOWN :
+                    #If clicked within boundary of board
                     if 1 <= x < (self.cols-1) and 1 <= y < (self.rows-1):
                         if click == 0:
                             self.start.x = x
@@ -112,6 +114,7 @@ class Board():
             for col in range(self.cols):
                 self.matrix[row].append(Node(row, col))
 
+    #Initializes the basic board
     def initilize(self):
         self.loadBoard()
         self.setBorder()
@@ -172,11 +175,7 @@ class RandomBoard(Board):
                     self.matrix[row][col].wall = True
                     #display(self)
 
-    def initilize(self):
-        self.loadBoard()
-        self.setBorder()
-        self.initChildren()
-
+    #User selects the nodes and their status'
     def userChoose(self):
         self.generateObstacles()
         self.selectStartAndGoal()
@@ -197,10 +196,13 @@ class MazeBoard(Board):
             for col in range(self.cols):
                 self.matrix[row].append(Node(row,col))#MazeNode(row, col))
 
+    #Loads the maze
     def loadMaze(self):
         maze = makeMaze((self.cols//2), (self.rows//2))
         maze_string = mazeString(maze, ("#", " "))
 
+        #map.txt is an already loaded map saved previously. 
+        #Add feature where user can save their map and fix this.
         file_out = open('map.txt', 'w')
         file_out.write(maze_string)
         file_out.close()
@@ -214,11 +216,13 @@ class MazeBoard(Board):
                     self.matrix[row][col].wall = True
         file_in.close()
 
+    #Initil
     def initilize(self):
         self.loadBoard()
         self.setBorder()
         self.loadMaze()
 
+    #User selects the nodes and their status'
     def userChoose(self):
         self.selectStartAndGoal()
         self.selectCheckpoints()
@@ -329,6 +333,7 @@ class ObsticleBoard(Board):
         self.loadBoard()
         self.setBorder()
     
+    #User selects the nodes and their status'
     def userChoose(self):
         self.selectStartAndGoal()
         self.selectCheckpoints()

@@ -17,6 +17,7 @@ def interactive(b):
     possibleRestart = False
     boardCleared = False
     showSlider = False
+    #Initialize all buttons
     opta = Button(GREEN, padding, 10, 70, 30, "MAZE")
     optb = Button(GREEN, padding+80, 10, 70, 30, "RANDOM")
     optc = Button(GREEN, padding+160, 10, 70, 30, "CREATIVE")
@@ -155,7 +156,7 @@ def interactive(b):
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         b.initChildren()
                         possibleRestart = False
-                        return bq
+                        return b
                 else:
                     optStart.color = D_GREEN
             else:

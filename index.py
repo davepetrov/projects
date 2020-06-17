@@ -20,12 +20,14 @@ from button import Button
 from interactive import interactive
 pygame.init()
 
+# The last path
+# This is called when the path has already passed the last checkpoint or if there are no checkpoints
 def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
     for i in range(len(b.openSet)):
         if b.openSet[i].f < b.openSet[winner].f:
             winner = i
     b.current = b.openSet[winner]
-    #Check if we are at the goal node
+    # Check if we are at the goal node
     if b.current.isGoal(b): 
         b.finish = True
         b.act = "done"
@@ -37,7 +39,7 @@ def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
         print("Path found")
         return True
 
-    
+    # In the proccess of finding the goal node
     set_remove(b.openSet, b.current)
     currentClosedSet.append(b.current);
     neighbors = b.current.neighbors
@@ -70,14 +72,14 @@ def A_starCP(b):
         winner = 0
         currentOpenSet = b.openSetsCP[cp]
         currentClosedSet = b.closedSetCP[cp]
-        a =0
         if len(b.openSetsCP)>1:
             if cp < len(b.checkpoints):
                 for i in range(len(currentOpenSet)):
                     if currentOpenSet[i].f < currentOpenSet[winner].f:
                         winner = i
                 b.current = currentOpenSet[winner]
-                #FOUND CP #cp  #####
+                
+                #Found the closest checkpint
                 if b.current.isCP(b.checkpoints[cp]): 
                     b.currentCP +=1
                     b.checkpointsFound[cp] = True
@@ -88,22 +90,30 @@ def A_starCP(b):
                     b.openSetsCP[cp][0] = b.current
                     b.openSet = b.openSetsCP[cp]
                     b.closedSetCP.append([])
-                    #isplay(b)
                     print("CP FOUND")
-                    
-                    #####
+
+                
+                #If the the processes of finding the next checkpoint    
                 else:
+
+                    #Remove the current node from the open set
+                    #Mark the node as visited
+                    #Update the list of neighbors of the current node
                     set_remove(currentOpenSet, b.current)
                     currentClosedSet.append(b.current)
                     neighbors = b.current.neighbors
                     
+                    #Look through the neigbors
                     for i in range(len(neighbors)):
                         neighbor = neighbors[i]
                         newPath = False
+                    
                         if neighbor not in currentClosedSet and not neighbor.wall:
                             temp_g = b.current.g + 1
 
                             if neighbor in currentOpenSet:
+                                # if the exact cost from the neigbor node from the cp is -
+                                # less than the current node, update it's exact cost (g)
                                 if temp_g < neighbor.g:
                                     neighbor.g = temp_g
                                     newPath = True
@@ -114,6 +124,8 @@ def A_starCP(b):
                                 newPath = True
                             
                             if newPath:
+                                #New path has been chosen
+                                #Update the estimated cost from the neigbor's node to the checkpoint 
                                 neighbor.h = neighbor.heuristic(b.checkpoints[cp])
                                 neighbor.f = neighbor.g + neighbor.h
                                 neighbor.previous=b.current 
@@ -124,8 +136,8 @@ def A_starCP(b):
         else:
             if findGoalPath(b, winner, currentOpenSet, currentClosedSet): return
 
-        ####
-        if not b.finish:
+        
+t
             b.path = []
             temp  = b.current 
             b.path.append(temp)
@@ -139,7 +151,6 @@ def A_starCP(b):
             
             if not skip:
                 display(b)
-        ####
     else:
         print("No Solution")
 
