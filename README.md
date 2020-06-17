@@ -12,8 +12,12 @@ You must create a map to start the pathfinding. The Orange node represents the s
 (ie: points the algorithms needs to pass in order to complete the path), and the red node represents the goal node.
 Note: The user has the option to not include checkpoints
 
-This pathfinding program requires the Pygame library in order to run. Without it, errors will arise, unfortunately:
-https://www.pygame.org/download.shtml
+This pathfinding program requires the [Pygame](https://www.pygame.org/download.shtml) library in order to run. Without it, errors will arise, unfortunately
+OR
+```sh
+$ brew install pip3
+$ pip3 install pygame
+```
 
 ## Instructions
 1) Run index.py to run the main file
