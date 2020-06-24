@@ -7,7 +7,7 @@
 #         -A_StartCP()
 #--------------------#
 # David Petrov
-# Completed April 29, 2020 Through May 32, 2020
+# Completed April 29, 2020 Through May 3, 2020
 # A* Pathfinding algorithm Visualizer
 #--------------------#
 
