@@ -44,7 +44,6 @@ class Board():
                     self.matrix[i][j].wall = True
 
     def selectCheckpoints(self):
-        click = 0
         cont = True
         self.userSelect = 'cp'
         count=0
@@ -240,15 +239,14 @@ class ObsticleBoard(Board):
         self.wallShape = 1 #1,2,3,4
 
     def selectObstacles(self):
-        click = 0
         cont = True
         self.userSelect = 'w'
         selection = False
         opta = Button(D_GREEN,WIDTH-80, padding+190, 20, 20, "1" )
         optb = Button(D_GREEN,WIDTH-80, padding+220, 20, 20, "2" )
         optc = Button(D_GREEN,WIDTH-80, padding+250, 20, 20, "3" )
-        optd = Button(D_GREEN,WIDTH-80, padding+280, 20, 20, "4" )
-        wallBrush_txt = font.render("WallBrush",True, BLACK)                                                           
+        optd = Button(D_GREEN,WIDTH-80, padding+280, 20, 20, "4" )  
+        self.wallShape=1                                                  
         while cont:
             for e in pygame.event.get():
                 pos=pygame.mouse.get_pos()
@@ -307,10 +305,32 @@ class ObsticleBoard(Board):
                             self.matrix[y][x].wall = True
                             self.matrix[y][x-1].wall = True
 
+                if self.wallShape == 1:
+                    opta.color = D_GREEN
+                    optb.color = AQUA
+                    optc.color = AQUA
+                    optd.color = AQUA
+                elif self.wallShape == 2 and 2<=y<self.rows-2 and 2<=x<self.cols-2:
+                    opta.color = AQUA
+                    optb.color = D_GREEN
+                    optc.color = AQUA
+                    optd.color = AQUA
+                elif self.wallShape == 3 and 2<=y<self.rows-2:
+                    opta.color = AQUA
+                    optb.color = AQUA
+                    optc.color = D_GREEN
+                    optd.color = AQUA
+                elif self.wallShape == 4 and 2<=x<self.cols-2:
+                    opta.color = AQUA
+                    optb.color = AQUA
+                    optc.color = AQUA
+                    optd.color = D_GREEN
+
                 if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
                     self.userSelect=None
                     cont = False
-                display(self)
+
+                display_l(self)
                 opta.draw(screen)
                 optb.draw(screen)
                 optc.draw(screen)

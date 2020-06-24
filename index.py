@@ -12,8 +12,7 @@
 #--------------------#
 
 from time import sleep
-from node import *
-from board import *
+from board import Board, MazeBoard, RandomBoard, ObsticleBoard, set_remove
 import pygame
 from display import *
 from button import Button
@@ -35,7 +34,6 @@ def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
         b.path.append(temp)
         b.paths.extend(b.path)
         b.path = b.paths
-        skip = False
         print("Path found")
         return True
 
@@ -67,6 +65,7 @@ def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
 def A_starCP(b):
     cp = 0
     skip=False
+    skip_b = Button(GOLD, WIDTH-100, HEIGHT-30, 90, 20, text="Fast Forward")
     while len(b.openSetsCP[cp])>0:
         b.act = 'work'
         winner = 0
@@ -136,28 +135,34 @@ def A_starCP(b):
         else:
             if findGoalPath(b, winner, currentOpenSet, currentClosedSet): return
 
-        
-t
-            b.path = []
-            temp  = b.current 
-            b.path.append(temp)
-            while temp.previous:
-                b.path.append(temp.previous)
-                temp = temp.previous
-
-            e = pygame.event.poll()
-            if e.type == pygame.KEYDOWN and e.key== pygame.K_SPACE:
-                skip = True
+        b.path = []
+        temp  = b.current 
+        b.path.append(temp)
+        while temp.previous:
+            b.path.append(temp.previous)
+            temp = temp.previous
             
-            if not skip:
-                display(b)
+        #Check if user fastforwards
+        for e in pygame.event.get():
+            pos=pygame.mouse.get_pos()
+            if skip_b.isOver(pos): 
+                skip_b.color= ORANGE
+                if e.type == pygame.MOUSEBUTTONDOWN:
+                    skip = True
+                    skip_b.color= D_ORANGE
+            else:
+                skip_b.color=GOLD
+        
+        if not skip:
+            display_l(b)
+            skip_b.draw(screen)
+            pygame.display.update()
     else:
         print("No Solution")
 
     display(b)
 
 def main():
-    exit = False
     b=Board(rows,cols)
     b.initilize()
     while True:

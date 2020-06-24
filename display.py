@@ -6,9 +6,8 @@
 #--------------------#
 
 import pygame
+from button import Button
 import sys
-from node import *
-from time import sleep
 pygame.init()
 
 # note: Maze version only works when cols and row are odd [BUG]
@@ -18,6 +17,7 @@ ppb = 15           # Pixels Per Block
 
 # Colours
 ORANGE = (240, 94, 35)
+D_ORANGE = (240-50, 94-50, 35-20)
 GREEN = (0, 255, 0)
 D_GREEN = (0, 200, 0)
 GOLD = (255, 191, 0)
@@ -55,12 +55,12 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 font = pygame.font.Font('rainyhearts.ttf', 20)
 font1 = pygame.font.Font('rainyhearts.ttf', 15)
 font2 = pygame.font.Font('rainyhearts.ttf', 30)
+font3 = pygame.font.Font('rainyhearts.ttf', 15)
 action = font.render(None, True, BLACK)
 
 
 def display_l(b):
     global action
-    global textTect
     global screen
 
     screen.fill(WHITE)
@@ -166,19 +166,10 @@ def display_l(b):
 
             # fail: Unable to find a path to goal/ readh every checkpoint
             elif b.act == 'fail':
-                action = font2.render('Fail: There exists no path to read every node selection', True, RED)
+                action = font3.render('Fail: There exists no path to read every node selection', True, RED)
             # done: Path found
             elif b.act == 'done':
-                action = font2.render('Path found: Completed!', True, RED)
-
-            # generating: Map generation ensues
-            elif b.act == "generating":
-                action = font2.render('Generating Map...', True, GOLD)
-
-            # choose: User selects board mode
-            if b.act == 'choose':
-                choose = font2.render('User Selection', True, D_AQUA)
-                screen.blit(choose, (bigtextX, bigtextY))
+                action = font3.render('Path found: Completed!', True, RED)
 
             screen.blit(action, (bigtextX, bigtextY))
 
