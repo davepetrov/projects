@@ -57,8 +57,7 @@ font1 = pygame.font.Font('rainyhearts.ttf', 15)
 font2 = pygame.font.Font('rainyhearts.ttf', 30)
 font3 = pygame.font.Font('rainyhearts.ttf', 15)
 action = font.render(None, True, BLACK)
-
-
+        
 def display_l(b):
     global action
     global screen
@@ -92,7 +91,7 @@ def display_l(b):
                 if b.current != None:
                     if node == b.current:
                         pygame.draw.rect(screen, VIOLET, [padding+col*ppb, padding+row*ppb, ppb, ppb])
-                    # TODO: Fix this[INEFFICIENT]
+                    # TODO: Fix this -.-
                     elif b.current.previous != None:
                         if node == b.current.previous:
                             pygame.draw.rect(screen, PATHSHADE1, [padding+col*ppb, padding+row*ppb, ppb, ppb])
@@ -114,9 +113,6 @@ def display_l(b):
                                             elif b.current.previous.previous.previous.previous.previous.previous.previous != None:
                                                 if node == b.current.previous.previous.previous.previous.previous.previous.previous:
                                                     pygame.draw.rect(screen, PATHSHADE7, [padding+col*ppb, padding+row*ppb, ppb, ppb])
-                                                elif b.current.previous.previous.previous.previous.previous.previous.previous.previous != None:
-                                                    if node == b.current.previous.previous.previous.previous.previous.previous.previous.previous:
-                                                        pygame.draw.rect(screen, PATHSHADE8, [padding+col*ppb, padding+row*ppb, ppb, ppb])
             else:
                 pygame.draw.ellipse(screen, WHITE, [padding+col*ppb, padding+row*ppb, ppb, ppb])
 
@@ -151,10 +147,10 @@ def display_l(b):
                 screen.blit(choose, (WIDTH-55, padding+160))
                 pygame.draw.rect(screen, D_AQUA, [WIDTH-80, padding+160, 20, 20])
 
+            # Draw action of the user.
             bigtextX = WIDTH//2-100
             bigtextY = HEIGHT-40
-            # Draw action of the user.
-            # work: Pathfinding
+            # work: Process of Pathfinding
             if b.act == 'work':
                 if len(b.openSetsCP) > 1:
                     if b.currentCP < len(b.openSetsCP):
