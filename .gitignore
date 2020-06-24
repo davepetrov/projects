@@ -1,3 +1,6 @@
 versions
 readmeimages
 .DS_store
+.display.py.swp
+__pycache__
+cpyindex.py
