@@ -49,6 +49,9 @@ Restart Button:
 This option resets all the paths to default (including the paths, closed set and open set) without deselecting the nodes placed by the user.
 After the board is reset the user can select the start button to re-visualize the path
 
+Fast forward button:
+As the pathfinding algorithm does its magic, a button on the bottom right corner will pop up. When clicked, the animation will fastforward to the end so you can see the final path. Typically used when the user knows the path is going to be long. Might as well speed things up! If no path shows, the alogrithm will show an exauseted route and the user is notified that no path is possible to get from the start to the goal. 
+
 ## A few demos:
 ![](readmeimages/showcase4.gif)
 ![](readmeimages/showcase2.gif)
