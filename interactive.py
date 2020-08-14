@@ -25,20 +25,22 @@ def interactive(b):
     optStart = Button(GREEN, WIDTH-100, 10, 70, 30, "Start")
     optClear = Button(D_VIOLET, WIDTH-180, 10, 70, 30, "Clear")
     optRestart = Button(D_VIOLET, WIDTH-260, 10, 70, 30, "Restart")
+    next_b = Button(GOLD, WIDTH-100, HEIGHT-30, 90, 20, text="Next")
     slider = Slider(padding+320, 10, 140, 20, 100)
+    recommended_text = font1.render('Recommended [0,30]', True, ORANGE)
+    selection = False
     b.act="choose"
     while not exit:
         possibleRestart = True
         screen.fill(WHITE)
         display_l(b)
-        selection = False
-        for event in pygame.event.get():
+        for e in pygame.event.get():
             pos = pygame.mouse.get_pos()
-            if event.type == pygame.QUIT:
+            if e.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if e.type == pygame.MOUSEBUTTONDOWN:
                 if opta.isOver(pos):
                     # User selected maze board
                     showSlider = False
@@ -118,10 +120,10 @@ def interactive(b):
             if showSlider and not possibleStart:
                 #Draw slider if board is random
                 slider.draw(screen)
-                if slider.isOver(pos) and event.type == pygame.MOUSEBUTTONDOWN:
+                if slider.isOver(pos) and e.type == pygame.MOUSEBUTTONDOWN:
                     selection = True
 
-                if event.type == pygame.MOUSEBUTTONUP:
+                if e.type == pygame.MOUSEBUTTONUP:
                     selection = False
 
                 if selection:
@@ -129,18 +131,21 @@ def interactive(b):
                     #Display recommended value of random wall spawn rate
                     #Lower -> Less walls, Higher -> More walls
                     if 0 <= slider.val < 30:
-                        recommended_text = font1.render('Recommended value', True, GREEN)
+                        recommended_text = font1.render('Recommended value', True, D_GREEN)
                     else:
                         recommended_text = font1.render('Recommended [0,30]', True, RED)
-                    screen.blit(recommended_text, (padding+320, 30))
-                    slider.draw(screen)
 
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    #In case of user presses space, selection is over
-                    b = RandomBoard(rows, cols, slider.val)
-                    boardCleared = False
-                    userPick = True
-                    selection = False
+                if e.type == pygame.MOUSEBUTTONDOWN:
+                    if next_b.isOver(pos): 
+                        next_b.color= ORANGE
+                        b = RandomBoard(rows, cols, slider.val)
+                        boardCleared = False
+                        userPick = True
+                        selection = False
+                    else:
+                        next_b.color=GOLD
+                screen.blit(recommended_text, (padding+320, 30))
+
 
             if userPick and not possibleStart:
                 b.initilize()
@@ -153,7 +158,7 @@ def interactive(b):
                 #User has option to start the Pathfinding
                 optStart.color = GREEN
                 if optStart.isOver(pos):
-                    if event.type == pygame.MOUSEBUTTONDOWN:
+                    if e.type == pygame.MOUSEBUTTONDOWN:
                         b.initChildren()
                         possibleRestart = False
                         return b
@@ -167,10 +172,19 @@ def interactive(b):
             optb.draw(screen)
             optc.draw(screen)
             optd.draw(screen)
+
+            if showSlider:
+                slider.draw(screen)
+                next_b.draw(screen)
+
+            if userPick:
+                next_b.draw(screen)
+
             if possibleStart:
-                optStart.draw(screen, (0,150,0))
+                optStart.draw(screen, (0,150,0)) #Green button
             else:
-                optStart.draw(screen, (150,0,0))
+                optStart.draw(screen, (150,0,0)) #Red button
+
             optClear.draw(screen)
             optRestart.draw(screen)
             pygame.display.update()

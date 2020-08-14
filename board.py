@@ -47,10 +47,11 @@ class Board():
         cont = True
         self.userSelect = 'cp'
         count=0
+        next_b = Button(GOLD, WIDTH-100, HEIGHT-30, 90, 20, text="Next")
         while cont:
             for e in pygame.event.get():
+                mouseX, mouseY = pygame.mouse.get_pos()
                 if e.type == pygame.MOUSEBUTTONDOWN and e.type != pygame.MOUSEBUTTONUP:
-                    mouseX, mouseY = pygame.mouse.get_pos()
                     x = (mouseX-padding)//ppb
                     y = (mouseY-padding)//ppb
                     if 1 <= x < (self.cols-1) and 1 <= y < (self.rows-1):
@@ -60,16 +61,21 @@ class Board():
                         self.matrix[y][x] = self.checkpoints[count]
                         self.openSetsCP.append([self.checkpoints[count]])
                         count+=1
-                if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
-                    if count > 0 :
-                        for cp in range(len(self.checkpoints)):
-                            self.checkpointsFound.append(False)
+
+                    if next_b.isOver((mouseX, mouseY)): 
+                        next_b.color= ORANGE
+                        if count > 0 :
+                            self.checkpointsFound = [False for i in range(len(self.checkpoints))]
+                        else:
+                            self.openSet = self.openSetsCP[0]
+                        self.userSelect=None
+                        cont = False
                     else:
-                        self.openSet = self.openSetsCP[0]
-                    self.userSelect=None
-                    cont = False
-                    
-            display(self)
+                        next_b.color=GOLD
+       
+            display_l(self)
+            next_b.draw(screen) 
+            pygame.display.update()
 
     #User selects position of start and goal for every board
     def selectStartAndGoal(self):
@@ -172,7 +178,6 @@ class RandomBoard(Board):
                 i = randint(0, 99)
                 if -1 <= i <= self.wallSpawnProbability:
                     self.matrix[row][col].wall = True
-                    #display(self)
 
     #User selects the nodes and their status'
     def userChoose(self):
@@ -201,7 +206,7 @@ class MazeBoard(Board):
         maze_string = mazeString(maze, ("#", " "))
 
         #map.txt is an already loaded map saved previously. 
-        #Add feature where user can save their map and fix this.
+        #Add feature where user can save their map, TODO
         file_out = open('map.txt', 'w')
         file_out.write(maze_string)
         file_out.close()
@@ -246,6 +251,7 @@ class ObsticleBoard(Board):
         optb = Button(D_GREEN,WIDTH-80, padding+220, 20, 20, "2" )
         optc = Button(D_GREEN,WIDTH-80, padding+250, 20, 20, "3" )
         optd = Button(D_GREEN,WIDTH-80, padding+280, 20, 20, "4" )  
+        next_b = Button(GOLD, WIDTH-100, HEIGHT-30, 90, 20, text="Next")
         self.wallShape=1                                                  
         while cont:
             for e in pygame.event.get():
@@ -326,15 +332,21 @@ class ObsticleBoard(Board):
                     optc.color = AQUA
                     optd.color = D_GREEN
 
-                if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
-                    self.userSelect=None
-                    cont = False
+                if e.type == pygame.MOUSEBUTTONDOWN:
+                    if next_b.isOver(pos): 
+                        next_b.color= ORANGE
+                        self.userSelect=None
+                        cont = False
+                    else:
+                        next_b.color=GOLD
+
 
                 display_l(self)
                 opta.draw(screen)
                 optb.draw(screen)
                 optc.draw(screen)
                 optd.draw(screen)
+                next_b.draw(screen)
                 pygame.display.update()
                 
 
