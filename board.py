@@ -109,6 +109,7 @@ class Board():
             display(self)
 
     def initChildren(self):
+        #initialize the children 
         for row in range(self.rows):
             for col in range(self.cols):
                 self.matrix[row][col].createChildren(self)
@@ -146,8 +147,10 @@ class Board():
         for i in range(1,self.rows-1):
             for j in range(1,self.cols-1):
                 self.matrix[i][j] = None
+        self.checkpoints=[]
     
     def restart(self):
+
         self.openSet = [self.start]  # nodes to be visited per ct
         self.openSetsCP = [[self.start]]
         self.closedSetCP = [[]]  # nodes visited per ct

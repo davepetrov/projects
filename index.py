@@ -19,6 +19,30 @@ from button import Button
 from interactive import interactive
 pygame.init()
 
+
+def sortcp(origin, checkpoints, newcheckpoints=[]):
+    '''
+    Returns checkpoints in sorted order based on distance starting with the origin
+
+    Node, List(Node), List -> List(Node)
+
+    '''
+    if len(checkpoints)==0:
+        return checkpoints
+    distances={}
+    
+    for i in checkpoints:
+        dist = pow(i.x-origin.x, 2) + pow(i.y-origin.y, 2)
+        distances[i]=dist
+
+    origin = min(distances.keys(), key=(lambda k: distances[k])) #New origin is the node with the smallest dist from the previous origin
+
+    newcheckpoints.append(origin)
+    checkpoints.remove(origin)
+    sortcp(origin, checkpoints, newcheckpoints)
+    return newcheckpoints
+
+
 # The last path
 # This is called when the path has already passed the last checkpoint or if there are no checkpoints
 def findGoalPath(b, winner, currentOpenSet, currentClosedSet):
@@ -66,6 +90,7 @@ def A_starCP(b):
     cp = 0
     skip=False
     skip_b = Button(GOLD, WIDTH-100, HEIGHT-30, 90, 20, text="Fast Forward")
+    b.checkpoints = sortcp(b.start, b.checkpoints, []) #first reference point - b.start
     while len(b.openSetsCP[cp])>0:
         b.act = 'work'
         winner = 0
@@ -165,6 +190,7 @@ def A_starCP(b):
 def main():
     b=Board(rows,cols)
     b.initilize()
+    
     while True:
         b = interactive(b)
         A_starCP(b)

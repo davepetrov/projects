@@ -47,5 +47,5 @@ class Node():
             self.neighbors.append(b.matrix[self.y][self.x-1])
 
     def heuristic(self, nodeB):
-        return abs(self.x-nodeB.x)+ abs(self.y-nodeB.y)          #Manhattan Dist
-        #return sqrt((self.x-nodeB.x)**2+(self.y-nodeB.y)**2)      #Euclid Dist
+        #return abs(self.x-nodeB.x)+ abs(self.y-nodeB.y)          #Manhattan Dist
+        return sqrt((self.x-nodeB.x)**2+(self.y-nodeB.y)**2)      #Euclid Dist
